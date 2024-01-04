@@ -1,0 +1,64 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+}
+
+body {
+  /* font-family: 'Oswald', sans-serif; */
+  @apply bg-gray-200;
+}
+
+#home-layout-outlet {
+  height: calc(100vh - 84px);
+  overflow-y: auto
+}
+
+#sidebar .active {
+  @apply bg-purple-700 text-white;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes scale {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform:  scale(1.2);
+  }
+
+  60% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-bounce-scale {
+  animation: scale 1.5s infinite;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
