@@ -15,7 +15,7 @@ export default function NotFound() {
             404
           </div>
           <p className="text-2xl md:text-3xl font-light leading-normal mb-8">
-            Sorry we couldn't find the page you're looking for
+            Sorry we could not find the page you are looking for
           </p>
 
           <Link

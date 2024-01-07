@@ -15,12 +15,11 @@ export default function NotFound() {
             alt="Error"
           />
         </div>
-
         <h1 className="text-4xl font-bold text-gray-800 mt-4">
           404 - Not Found
         </h1>
         <p className="text-lg text-gray-600 mt-2 mb-12">
-          Oops! The page you're looking for doesn't exist.
+          Oops! The page does not exist.
         </p>
 
         <Link
