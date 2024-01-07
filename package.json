@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:ignore-errors": " true",
     "start": "next start",
     "lint": "next lint"
   },
