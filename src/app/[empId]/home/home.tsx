@@ -43,16 +43,13 @@ const DashboardHome = () => {
 //   const user = getUser(localStorage);
 
   // Sample
-  const doctorButtons = [
+  const buttons = [
         {
       id: 1,
       text: "Prescribe Medication",
       icon: <Medication className="w-36 h-36" color={"#ff2200"} />,
       link: "/123/doctor",
-    }
-  ];
-  
-  const nurseButtons = [
+    },
     {
       id: 2,
       text: "BedManagement",
@@ -65,13 +62,6 @@ const DashboardHome = () => {
       icon: <HospitalBuilding className="w-36 h-36" color={"#ff2200"} />,
       link: "/123/nurse/visualize_depart",
     },
-        
-    //     {
-    //   id: 4,
-    //   text: "Request Patient Admission",
-    //   icon: <RequestAdmission className="w-36 h-36" color={"#ff1200"} />,
-    //   link: "/123/nurse/requestAdmit",
-    // },
     {
       id: 5,
       text: "Admitted List",
@@ -83,10 +73,7 @@ const DashboardHome = () => {
       text: "Request List",
       icon: <UpdateFile className="w-36 h-36" color={"#89cff0"} />,
       link: "/123/nurse/request",
-    }
-  ];
-
-  const buttons = [
+    },
     {
       id: 7,
       text: "Register Staff",
@@ -99,12 +86,7 @@ const DashboardHome = () => {
       icon: <RegisterPatient className="w-36 h-36" color={"#269"} />,
       link: "/123/register",
     },
-    // {
-    //   id: 9,
-    //   text: "Consult Patient File",
-    //   icon: <ConsultFile className="w-36 h-36" color={"#ff1200"} />,
-    //   link: "/123/consult",
-    // },
+    
     {
       id: 10,
       text: "Profile",
@@ -113,23 +95,13 @@ const DashboardHome = () => {
     }
   ];
 
-//   console.log(user.role.role);
-//   let renderedButtons;
-//   if (user.role.role == 'doctor') {
-//     renderedButtons = doctorButtons.concat(buttons);
-//   } else if (user.role.role == 'chargeNurse') {
-//     renderedButtons = nurseButtons.concat(buttons);
-//   } else {
-//     renderedButtons = buttons;
-//   }
-
 
   return (
     <div className="container mx-auto px-[12px] md:px-24 xl:px-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-4 lg:gap-y-4">
-        {/* {renderedButtons.map((button) => ( */}
+         {buttons.map((button) => (
           <ButtonLink key={button.id} {...button} />
-        {/* ))} */}
+          ))}
       </div>
     </div>
   );
