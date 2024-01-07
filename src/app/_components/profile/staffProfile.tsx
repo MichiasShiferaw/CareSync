@@ -1,6 +1,7 @@
 import React from "react";
-import PatientProfile from "@/app/_components/profile/patientProfile";
+import PatientProfile from "@/app/_components/profile/PatientProfile";
 import SimpleHeader from "@/app/_components/bodyHeader/simpleHeader";
+import Image from "next/image";
 
 const profile = () => {
   return (
@@ -11,7 +12,7 @@ const profile = () => {
           <div className="md:mx-2 rounded-2xl">
             <div className="bg-white p-3">
               <div className="image overflow-hidden">
-                <img
+                <Image
                   className="h-1/4 w-1/4 mx-auto"
                   src="https://www.pngall.com/wp-content/uploads/5/Profile.png"
                   alt=""

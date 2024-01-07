@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const basicCard = ({
@@ -13,7 +14,7 @@ const basicCard = ({
   console.log(imageUrl)
   return (
     <div className="max-w-md mx-auto overflow-hidden shadow-lg rounded-lg bg-gray-300">
-      <img className="w-full object-cover border-b-2 border-black" src={imageUrl} alt={title} />
+      <Image className="w-full object-cover border-b-2 border-black" src={imageUrl} alt={title} />
 
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>

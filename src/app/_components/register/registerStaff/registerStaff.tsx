@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const registerEmployeeForm = () => {
+const RegisterEmployeeForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -393,4 +393,4 @@ const registerEmployeeForm = () => {
   );
 };
 
-export default registerEmployeeForm;
+export default RegisterEmployeeForm;

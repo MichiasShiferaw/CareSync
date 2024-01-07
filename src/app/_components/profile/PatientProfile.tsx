@@ -1,8 +1,9 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import { useState } from "react";
 
-const patientProfile = ({patientId, onSubmit=null}) => {
+const PatientProfile = ({patientId, onSubmit=null}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedValues, setEditedValues] = useState({
     // Initialize with default values from backend
@@ -60,7 +61,7 @@ const patientProfile = ({patientId, onSubmit=null}) => {
         <div className="w-full md:w-4/12 md:mx-2 mb-4 md:mb-0">
           <div className="bg-white p-3 border-t-4 border-blue-400">
             <div className="image overflow-hidden">
-              <img
+              <Image
                 className="h-1/2 w-1/2 mx-auto"
                 src="https://www.pngall.com/wp-content/uploads/5/Profile.png"
                 alt=""
@@ -385,4 +386,4 @@ const patientProfile = ({patientId, onSubmit=null}) => {
   );
 };
 
-export default patientProfile;
+export default PatientProfile;

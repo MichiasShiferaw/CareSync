@@ -19,8 +19,7 @@ const getBackgroundColor = (type:string)=>{
 
 
 
-const Alert = ({message, timerVal=10000000, type, className=""}) => {
-  console.log(type)
+const Alert = ({message, timerVal=5000, type, className=""}) => {
 
   const [isVisible, setIsVisible] = useState(true);
 
@@ -38,7 +37,7 @@ const Alert = ({message, timerVal=10000000, type, className=""}) => {
     }, timerVal);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [timerVal]);
   return (
     <>
       {/* {true && ( */}
@@ -80,7 +79,6 @@ const Alert = ({message, timerVal=10000000, type, className=""}) => {
     </div>
   </div>
 </div>;
-      {/* )} */}
     </>
   );
 };

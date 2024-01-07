@@ -8,7 +8,7 @@ import Link from "next/link";
 import { ChevronDown } from "../_components/icons/icons";
 import Breadcrumb from "../_components/breadcrumb/breadcrumb";
 
-const layout = ({ children, className = "" }) => {
+const Layout = ({ children, className = "" }) => {
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
@@ -39,4 +39,4 @@ const layout = ({ children, className = "" }) => {
   );
 };
 
-export default layout;
+export default Layout;

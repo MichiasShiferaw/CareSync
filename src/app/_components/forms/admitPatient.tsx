@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import PatientProfile from "../profile/patientProfile";
+import PatientProfile from "../profile/PatientProfile";
 import { ChevronDown, ChevronUp, SuccessIcon } from "../icons/icons";
 import BasicPopup from "../alerts/basicPopup";
 import Receipt from "../receipts/receipt";

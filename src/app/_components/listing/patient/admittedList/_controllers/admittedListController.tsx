@@ -4,7 +4,7 @@ import AdmittedList from "../admittedList";
 import DischargePatientForm from "@/app/_components/forms/dischargePatientForm";
 import Alert from "@/app/_components/alerts/basicAlert";
 
-const admittedListController = ({ department }) => {
+const AdmittedListController = ({ department }) => {
   const [showDischargeForm, setShowDischargeForm] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
 
@@ -55,4 +55,4 @@ const admittedListController = ({ department }) => {
   );
 };
 
-export default admittedListController;
+export default AdmittedListController;

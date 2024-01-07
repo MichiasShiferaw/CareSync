@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import BedManagement from '../bedManagement';
 
 
-const bedManagementController = ({onSubmit=null}) => {
+const BedManagementController = ({onSubmit=null}) => {
   // Sample
       const [rooms, setRooms] = useState([
     {
@@ -57,4 +57,4 @@ const bedManagementController = ({onSubmit=null}) => {
   );
 };
 
-export default bedManagementController
+export default BedManagementController
