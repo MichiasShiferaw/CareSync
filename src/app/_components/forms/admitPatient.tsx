@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import PatientProfile from "../profile/PatientProfile";
 import { ChevronDown, ChevronUp, SuccessIcon } from "../icons/icons";
 import BasicPopup from "../alerts/basicPopup";
@@ -8,26 +8,34 @@ import Loader from "../loader/loader";
 import { useRouter } from 'next/router';
 import BedManagementController from "../bedManagement/controllers/bedManagementController";
 
-const AdmitPatient = ({patientId}) => {
+interface AdmitPatientProps {
+  patientId: string;
+}
 
+const AdmitPatient: FC<AdmitPatientProps> = ({patientId}) => {
 
-  const [currentStep, setCurrentStep] = useState(1);
-  const [showPopup, setShowPopup] = useState(false);
-  const [showPopupConfirmed, setShowPopupConfirmed] = useState(false);
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [showPopupConfirmed, setShowPopupConfirmed] = useState<boolean>(false);
   const [openStep, setOpenStep] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
+  const [loading, setLoading] = useState<boolean>(false);
+  const [formData, setFormData] = useState<{
+    step1: any;
+    step2: any;
+    step3: any;
+    complete: any;
+  }>({
     step1: {},
     step2: {},
     step3: {},
     complete: {},
   });
 
-  const toggleAccordion = (stepId: number) => {
+  const toggleAccordion = (stepId: number): void => {
     setOpenStep((prevId) => (prevId === stepId ? null : stepId));
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (): void => {
 
     if (currentStep <= steps.length + 2) {
       setCurrentStep((prevStep) => prevStep + 1);
@@ -38,7 +46,7 @@ const AdmitPatient = ({patientId}) => {
     }
   };
 
-  const handleStepSubmit = (stepData: any) => {
+  const handleStepSubmit = (stepData: any): void => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [`step${currentStep}`]: stepData,
@@ -47,28 +55,26 @@ const AdmitPatient = ({patientId}) => {
     handleFormSubmit();
   };
 
-  const handleFormBack = () => {
+  const handleFormBack = (): void => {
     // Move back to the previous form section
     setShowPopup(false);
     setShowPopupConfirmed(false);
     setCurrentStep((prevStep) => Math.max(1, prevStep - 1));
   };
 
-  const handleOnClose = () => {
+  const handleOnClose = (): void => {
     setShowPopupConfirmed(false);
   };
 
-  const handleFormComplete = () => {
+  const handleFormComplete = (): void => {
     console.log('Complete Form Data:', formData);
 
     setShowPopup(false);
   };
 
-
-
-    useEffect(() => {
+  useEffect(() => {
     // Check if formData is complete
-    const isFormDataComplete =
+    const isFormDataComplete: boolean =
       Object.keys(formData.step1).length > 0 &&
       Object.keys(formData.step2).length > 0;
 
@@ -91,7 +97,6 @@ const AdmitPatient = ({patientId}) => {
       content: <Receipt  formData={formData}/>
     }
   ];
-
 
   return (
     <>
@@ -122,7 +127,6 @@ const AdmitPatient = ({patientId}) => {
               {/*  (openStep === step.id) && */}
               {currentStep === step.id && (
                 <div>
-                  {" "}
                   {currentStep!==1&&
                   <div className="text-right">
                   <button
@@ -149,8 +153,7 @@ const AdmitPatient = ({patientId}) => {
           visible={showPopup}
           option1="View Receipt"
           onConfirm={handleFormComplete}
-          goBack={handleFormBack}
-        />
+          goBack={handleFormBack}         />
       )}
       {showPopupConfirmed && (
         <BasicPopup
@@ -159,8 +162,7 @@ const AdmitPatient = ({patientId}) => {
           title={"Congrats"}
           visible={showPopup}
           onClose={handleOnClose}
-          goBack={handleFormBack}
-        />
+          goBack={handleFormBack}        />
       )}
     </>
   );

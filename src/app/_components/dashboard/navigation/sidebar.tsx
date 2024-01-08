@@ -1,24 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { FC } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {
-  ChevronDown,
-  ChevronUp,
-  ConsultFile,
-  Employee,
-  EmployeeProfile,
-  HospitalBed,
-  HospitalBuilding,
-  Medication,
-  RegisterPatient,
-  RequestAdmission,
-  UpdateFile,
-} from "@/app/_components/icons/icons";
 import { doctorItems, generalItems, nurseItems } from "./main";
 
-const CustomLink = ({ tabs }) => {
-  // console.log(tabs[1].icon!==undefined)
+interface Tab {
+  link: string;
+  icon?: JSX.Element;
+  text: string;
+}
+
+interface CustomLinkProps {
+  tabs: Tab[];
+}
+
+const CustomLink: FC<CustomLinkProps> = ({ tabs }) => {
   return (
     <>
       {tabs.map((tab, index) => (
@@ -37,12 +33,7 @@ const CustomLink = ({ tabs }) => {
   );
 };
 
-function Sidebar() {
-  // const [openSubmenu, setOpenSubmenu] = React.useState<string | null>(null);
-  //   const toggleSubmenu = (submenuTitle: string) => {
-  //   setOpenSubmenu((prev) => (prev === submenuTitle ? null : submenuTitle));
-  // };
-
+const Sidebar: FC = () => {
   return (
     <div className="bg-secondary h-min-screen py-3">
       <h3 className="px-5 pb-5 my-2 text-3xl text-white md:pl-4 md:pr-0 border-b-2 border-dashed font-bold">
@@ -94,6 +85,6 @@ function Sidebar() {
       </div>
     </div>
   );
-}
+};
 
 export default Sidebar;

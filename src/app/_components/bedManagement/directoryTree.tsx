@@ -1,6 +1,22 @@
 import React from "react";
 
-const DirectoryTree = ({ rooms }) => {
+interface Bed {
+  id: number;
+  name: string;
+  isUsed: boolean;
+}
+
+interface Room {
+  id: number;
+  name: string;
+  beds: Bed[];
+}
+
+interface DirectoryTreeProps {
+  rooms: Room[];
+}
+
+const DirectoryTree: React.FC<DirectoryTreeProps> = ({ rooms }) => {
   return (
     <>
       <h2 className="md:text-xl font-bold mb-2 text-sm">Directory Tree</h2>

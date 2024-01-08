@@ -1,10 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
 
+interface Patient {
+  id: number;
+  name: string;
+  age: number;
+  bedNumber: string;
+  admissionDate: string;
+}
 
+interface AdmittedListProps {
+  department: Patient[];
+  onDischarge: (id: number) => void;
+  onView: (id: number) => void;
+}
 
-const AdmittedList = ({department, onDischarge, onView}) => {
-  
+const AdmittedList: React.FC<AdmittedListProps> = ({
+  department,
+  onDischarge,
+  onView,
+}) => {
 
   department = [
   { id: 1, name: 'John Doe', age: 30, bedNumber: 'B101', admissionDate: '2023-01-01' },
@@ -69,7 +84,7 @@ const AdmittedList = ({department, onDischarge, onView}) => {
                     pathname: "/123/view",
                     query: { patientId: patient.id },
                   }}
-                onClick={() => onView("patient.id")} 
+                onClick={() => onView(123)} 
                 className="mx-1 px-6 bg-secondary p-1 duration-150 hover:!border-b-2 text-blue-900 rounded-xl drop-shadow-lg items-center border-2 border-b-4 border-blue-950 cursor-pointer active:bg-yellow-400">
                   View File
                 </Link>

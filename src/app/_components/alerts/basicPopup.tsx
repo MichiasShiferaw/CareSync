@@ -1,8 +1,19 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { CautionSign, IdeaIcon, SuccessIcon, ErrorIcon } from "../icons/icons";
 
-const basicPopup = ({
+interface BasicPopupProps {
+  message: string;
+  title: string;
+  onClose?: ()=>void;
+  type: string;
+  className?: string;
+  visible: boolean;
+  goBack: () => void;
+  option1?: string;
+  onConfirm?: () => void;
+}
+
+const BasicPopup: FC<BasicPopupProps> = ({
   message,
   title,
   onClose,
@@ -15,8 +26,6 @@ const basicPopup = ({
 }) => {
   if (!visible) return null;
 
-
-
   return (
     <>
       <div
@@ -24,17 +33,16 @@ const basicPopup = ({
       >
         <div className="bg-gray-100 py-8 rounded-md w-1/2 relative">
           <div className=" transition-all ease-in-out duration pt-5 pb-4 rounded-lg overflow-hidden">
-            {(onClose!==null)?(
-            <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-              onClick={onClose}
-            >
-              X
-            </button>
-            ):(
+            {(onClose !== null) ? (
+              <button
+                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                onClick={onClose}
+              >
+                X
+              </button>
+            ) : (
               null
-              )
-            }
+            )}
 
             <div>
               <div className="rounded-full flex justify-center items-center w-16 h-16 mx-auto">
@@ -42,9 +50,9 @@ const basicPopup = ({
                   <SuccessIcon className="w-32 h-32" />
                 ) : type === "error" ? (
                   <ErrorIcon className="w-32 h-32" />
-                ): type === "caution" ? (
+                ) : type === "caution" ? (
                   <CautionSign className="w-32 h-32" />
-                )  : (
+                ) : (
                   <IdeaIcon className="w-32 h-32" />
                 )}
               </div>
@@ -56,8 +64,8 @@ const basicPopup = ({
               </div>
 
               <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 mt-5">
-                <button onClick={onConfirm} 
-                className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto">
+                <button onClick={onConfirm}
+                  className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto">
                   {(option1 !== null) ? option1 : "Confirm"}
                 </button>
                 <button
@@ -75,4 +83,4 @@ const basicPopup = ({
   );
 };
 
-export default basicPopup;
+export default BasicPopup;

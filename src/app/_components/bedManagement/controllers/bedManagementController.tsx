@@ -1,10 +1,14 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState,FC } from 'react';
 import BedManagement from '../bedManagement';
 
+interface BedManagementControllerProps {
+  onSubmit?: any;
+}
 
-const BedManagementController = ({onSubmit=null}) => {
+const BedManagementController: FC<BedManagementControllerProps> = ({onSubmit=undefined}) => {
   // Sample
+  // const [rooms, setRooms] = useState<Room[]>([
       const [rooms, setRooms] = useState([
     {
       id: 1,

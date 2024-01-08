@@ -1,9 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,FC } from "react";
 import RequestListController from "./requestList/_controllers/requestListController";
 import AdmittedListController from "./admittedList/_controllers/admittedListController";
 
-const Main = ({ department }) => {
+interface ListingProps {
+  department: string;
+}
+
+
+const Main: FC<ListingProps> =   ({ department }) => {
   const tabs = [
     {
       id: "All Patient",

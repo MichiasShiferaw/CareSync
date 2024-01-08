@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { postPatientRegister } from "@/app/_lib/api";
+// import { postPatientRegister } from "@/app/_lib/api";
 import { ChevronDown, ChevronUp } from "../../icons/icons";
 import Link from "next/link";
 import Alert from "../../alerts/basicAlert";

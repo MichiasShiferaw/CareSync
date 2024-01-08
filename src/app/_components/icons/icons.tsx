@@ -1,6 +1,10 @@
-import React from "react";
+import React, { FC, SVGProps } from 'react';
 
-export const CautionSign = ({ className, ...rest }) => {
+interface ClassProps {
+  className?: string;
+  color?:string;
+}
+export const CautionSign : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +26,7 @@ export const CautionSign = ({ className, ...rest }) => {
   );
 };
 
-export const SuccessIcon = ({ className, ...rest }) => {
+export const SuccessIcon : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +48,7 @@ export const SuccessIcon = ({ className, ...rest }) => {
   );
 };
 
-export const IdeaIcon = ({ className, ...rest }) => {
+export const IdeaIcon : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +70,7 @@ export const IdeaIcon = ({ className, ...rest }) => {
   );
 };
 
-export const ErrorIcon = ({ className, ...rest }) => {
+export const ErrorIcon : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +92,7 @@ export const ErrorIcon = ({ className, ...rest }) => {
   );
 };
 
-export const ChevronDown = ({ className, ...rest }) => {
+export const ChevronDown : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +114,7 @@ export const ChevronDown = ({ className, ...rest }) => {
   );
 };
 
-export const ChevronUp = ({ className, ...rest }) => {
+export const ChevronUp : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +136,7 @@ export const ChevronUp = ({ className, ...rest }) => {
   );
 };
 
-export const DoctorIcon = ({ color, className, ...rest }) => {
+export const DoctorIcon : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +162,7 @@ export const DoctorIcon = ({ color, className, ...rest }) => {
   );
 };
 
-export const NurseIcon = ({ color, className, ...rest }) => {
+export const NurseIcon : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +200,7 @@ export const NurseIcon = ({ color, className, ...rest }) => {
   );
 };
 
-export const DirectorIcon = ({ color, className, ...rest }) => {
+export const DirectorIcon : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -221,7 +225,7 @@ export const DirectorIcon = ({ color, className, ...rest }) => {
   );
 };
 
-export const AvatarIcon = ({ color, className, ...rest }) => {
+export const AvatarIcon : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +250,7 @@ export const AvatarIcon = ({ color, className, ...rest }) => {
   );
 };
 
-export const MaleAvatar = ({ color, className, ...rest }) => {
+export const MaleAvatar : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -339,7 +343,7 @@ export const MaleAvatar = ({ color, className, ...rest }) => {
   );
 };
 
-export const FemaleAvatar = ({ color, className, ...rest }) => {
+export const FemaleAvatar : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -434,7 +438,7 @@ export const FemaleAvatar = ({ color, className, ...rest }) => {
   );
 };
 
-export const PatientIcon = ({ color, className, ...rest }) => {
+export const PatientIcon : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -462,7 +466,7 @@ export const PatientIcon = ({ color, className, ...rest }) => {
   );
 };
 
-export const BedIcon = ({ color, className, ...rest }) => {
+export const BedIcon : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -486,7 +490,7 @@ export const BedIcon = ({ color, className, ...rest }) => {
   );
 };
 
-export const BedIcon2 = ({ className, ...rest }) => {
+export const BedIcon2 : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -519,7 +523,7 @@ export const BedIcon2 = ({ className, ...rest }) => {
   );
 };
 
-export const HospitalIconDraft = ({ className, ...rest }) => {
+export const HospitalIconDraft : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -552,7 +556,7 @@ export const HospitalIconDraft = ({ className, ...rest }) => {
   );
 };
 
-export const HospitalList = ({ className, ...rest }) => {
+export const HospitalList : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -585,7 +589,7 @@ export const HospitalList = ({ className, ...rest }) => {
   );
 };
 
-export const HospitalBuilding = ({ className, ...rest }) => {
+export const HospitalBuilding : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -626,7 +630,7 @@ export const HospitalBuilding = ({ className, ...rest }) => {
   );
 };
 
-export const HospitalBed = ({ className, ...rest }) => {
+export const HospitalBed : FC<ClassProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -714,7 +718,7 @@ export const HospitalBed = ({ className, ...rest }) => {
   );
 };
 
-export const Medication = ({ color, className, ...rest }) => {
+export const Medication : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -799,7 +803,7 @@ export const Medication = ({ color, className, ...rest }) => {
     </svg>
   );
 };
-export const Employee = ({ color, className, ...rest }) => {
+export const Employee : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -869,7 +873,7 @@ export const Employee = ({ color, className, ...rest }) => {
 
 
 
-export const RegisterPatient = ({ color, className, ...rest }) => {
+export const RegisterPatient : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -885,7 +889,7 @@ export const RegisterPatient = ({ color, className, ...rest }) => {
 };
 
 
-export const UpdateFile = ({ color, className, ...rest }) => {
+export const UpdateFile : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -902,7 +906,7 @@ export const UpdateFile = ({ color, className, ...rest }) => {
 };
 
 
-export const ConsultFile = ({ color, className, ...rest }) => {
+export const ConsultFile : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -919,7 +923,7 @@ export const ConsultFile = ({ color, className, ...rest }) => {
 };
 
 
-export const RequestAdmission = ({ color, className, ...rest }) => {
+export const RequestAdmission : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -936,7 +940,7 @@ export const RequestAdmission = ({ color, className, ...rest }) => {
 };
 
 
-export const EmployeeProfile = ({ color, className, ...rest }) => {
+export const EmployeeProfile : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -951,7 +955,7 @@ export const EmployeeProfile = ({ color, className, ...rest }) => {
   );
 };
 
-export const BlackIcon = ({ color, className, ...rest }) => {
+export const BlackIcon : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -971,7 +975,7 @@ export const BlackIcon = ({ color, className, ...rest }) => {
 
 
 
-export const Template = ({ color, className, ...rest }) => {
+export const Template : FC<ClassProps> = ({ color, className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

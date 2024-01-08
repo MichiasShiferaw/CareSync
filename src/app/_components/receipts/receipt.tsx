@@ -1,6 +1,31 @@
 import React from 'react'
 
-const Receipt = ({formData}) => {
+
+interface FormData {
+  step1: {
+    firstName: string;
+    lastName: string;
+    gender: string;
+    dOB: string;
+    martialStatus: string;
+    phoneNumber: string;
+    addressStreetName: string;
+    addressCity: string;
+    addressPostCode: string;
+  };
+  step2: {
+    openRoomId: string;
+    selectedBedId: string;
+  };
+  step3: any; // Define the structure for step3 if it has a specific structure
+  complete: any; // Define the structure for complete if it has a specific structure
+}
+
+interface ReceiptProps {
+  formData: FormData;
+}
+
+const Receipt: React.FC<ReceiptProps> = ({ formData }) => {
 
   return (
     <div>
