@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import RequestListController from "@/app/_components/listing/patient/requestList/_controllers/requestListController";
 import Link from "next/link";
 import {
@@ -13,7 +13,19 @@ import {
 } from "@/app/_components/icons/icons";
 import ButtonHeader from "@/app/_components/bodyHeader/buttonHeader";
 import SimpleHeader from "../bodyHeader/simpleHeader";
-const EmployeeCountComp = ({ position, Icon,num }) => {
+
+interface EmployeeCountCompProps {
+  position: string;
+  Icon: FC<React.SVGProps<SVGSVGElement>>;
+  num: string;
+}
+
+
+const EmployeeCountComp: FC<EmployeeCountCompProps> = ({
+  position,
+  Icon,
+  num,
+}) => {
   return (
     <div className="flex flex-col p-4 bg-white border-black border-4 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
       <div className="flex items-center justify-between">
@@ -43,7 +55,13 @@ const EmployeeCountComp = ({ position, Icon,num }) => {
   );
 };
 
-const VisualizeDepartment = ({ divisionName }) => {
+interface VisualizeDepartmentProps {
+  divisionName: string;
+}
+
+const VisualizeDepartment: FC<VisualizeDepartmentProps> = ({
+  divisionName,
+}) => {
   return (
     <>
       <SimpleHeader
@@ -161,13 +179,20 @@ const VisualizeDepartment = ({ divisionName }) => {
                   </Link>
                 </div>
                 <div className="flex-grow overflow-hidden">
-                  <RequestListController department={divisionName} className="max-h-48" />
+                  <RequestListController
+                    department={divisionName}
+                    className="max-h-48"
+                  />
                 </div>
               </div>
             </div>
 
             <div className="w-full lg:w-2/12 flex flex-col space-y-4">
-              <EmployeeCountComp position="doctor" Icon={DoctorIcon} num="12"/>
+              <EmployeeCountComp
+                position="doctor"
+                Icon={DoctorIcon}
+                num="12"
+              />
               <EmployeeCountComp position="nurse" Icon={NurseIcon} num="3" />
               <EmployeeCountComp
                 position="staff members"
