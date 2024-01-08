@@ -1,24 +1,46 @@
-"use client";
-import { ChevronDown, ChevronUp } from "@/app/_components/icons/icons";
-import React, { Fragment, useState } from "react";
+"use client"
+import React, { FC, useState } from "react";
 import TableVisualizer from "./tableVisualizer";
 import CardVisualizer from "./cardVisualizer";
 import DirectoryTree from "./directoryTree";
+import { ChevronDown, ChevronUp } from "../icons/icons";
 
-const BedManagement = ({
+
+interface Bed {
+  id: number;
+  name: string;
+  isUsed: boolean;
+}
+
+interface Room {
+  id: number;
+  name: string;
+  beds: Bed[];
+}
+
+interface BedManagementProps {
+  rooms: Room[];
+  onAddRoom: (roomName: string) => void;
+  onAddBed: (bedNumber: string, roomId: number) => void;
+  onSubmit?: (data: { selectedBedId: number; openRoomId: number }) => void;
+}
+
+const BedManagement: FC<BedManagementProps> = ({
   rooms,
   onAddRoom,
-  onAddBed,onSubmit=null
+  onAddBed,
+  onSubmit,
 }) => {
   const [selectedSection, setSelectedSection] = useState<string>("+");
-  const [newBedNumber, setNewBedNumber] = useState("");
-  const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
-  const [newRoomName, setNewRoomName] = useState("");
+  const [newBedNumber, setNewBedNumber] = useState<string>("");
+  const [selectedRoom, setSelectedRoom] = useState<number>(-1);
+  const [newRoomName, setNewRoomName] = useState<string>("");
   const [currentView, setCurrentView] = useState<string>("table");
-  const [selectedRoomId, setSelectedRoomId] = useState<number | null>(null);
-  const [newRoomVisible, setNewRoomVisible] = useState(false);
-  const [newBedVisible, setNewBedVisible] = useState(false);
-  const [selectedBedId, setSelectedBedId] = useState<number | null>(null);
+  const [selectedRoomId, setSelectedRoomId] = useState<number>(-1);
+  const [newRoomVisible, setNewRoomVisible] = useState<boolean>(false);
+  const [newBedVisible, setNewBedVisible] = useState<boolean>(false);
+  const [selectedBedId, setSelectedBedId] = useState<number>(-1);
+  const [openRoomId, setOpenRoomId] = useState<number>(-1);
 
   const handleAddRoom = () => {
     if (newRoomName.trim() !== "") {
@@ -27,24 +49,19 @@ const BedManagement = ({
     }
   };
 
-
-  const handleSelectedClick = (bedId) => {
+  const handleSelectedClick = (bedId: number) => {
     setSelectedBedId(bedId);
-    console.log(`Bed ${bedId} assigned`)
   };
 
   const handleAddBed = () => {
-    if (selectedRoomId && newBedNumber.trim() !== "") {
-      console.log(selectedRoomId)
+    if (selectedRoomId>=0 && newBedNumber.trim() !== "") {
       onAddBed(newBedNumber, selectedRoomId);
       setNewBedNumber("");
     }
   };
 
-  const [openRoomId, setOpenRoomId] = useState<number | null>(null);
-
   const toggleAccordion = (roomId: number) => {
-    setOpenRoomId((prevId) => (prevId === roomId ? null : roomId));
+    setOpenRoomId((prevId) => (prevId === roomId ? -1 : roomId));
   };
 
   const toggleViewMode = () => {
@@ -52,13 +69,14 @@ const BedManagement = ({
       prevMode === "table" ? "card" : "table"
     );
   };
+
   const handleRoomSelect = (roomId: number) => {
     setSelectedRoomId(roomId);
   };
 
-    const handleSubmit = () => {
-    if (selectedBedId !== null && openRoomId !== null) {
-      onSubmit({ selectedBedId, openRoomId });
+  const handleSubmit = () => {
+    if (selectedBedId >= 0 && openRoomId >=0) {
+      onSubmit && onSubmit({ selectedBedId, openRoomId });
     }
   };
 
@@ -67,13 +85,11 @@ const BedManagement = ({
       <h1 className="text-3xl font-bold my-2">Bed Management</h1>
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <div className=" w-full md:w-1/6 mr-2 hidden md:block">
-          <DirectoryTree rooms={rooms}/>
-
+          <DirectoryTree rooms={rooms} />
         </div>
 
         <div className="mx-auto w-full md:w-5/6 mb-4 md:ml-4">
           <div className="text-right">
-
             {/* Dropdown to select add bed/room */}
             <div className="mb-4">
               <select
@@ -81,7 +97,9 @@ const BedManagement = ({
                 onChange={(e) => setSelectedSection(e.target.value)}
                 className="p-2 border rounded-md bg-slate-300"
               >
-                <option value="none" className="border-2">&#43;</option>
+                <option value="none" className="border-2">
+                  &#43;
+                </option>
                 <option value="addRoom">Add Room</option>
                 <option value="addBed">Add Bed</option>
               </select>
@@ -97,7 +115,7 @@ const BedManagement = ({
                   onChange={(e) => setNewRoomName(e.target.value)}
                   className="border rounded p-2"
                 />
-                
+
                 <button
                   onClick={() => {
                     handleAddRoom();
@@ -172,13 +190,17 @@ const BedManagement = ({
                       : "Switch to Table View"}
                   </button>
                   {currentView === "table" ? (
-                    <TableVisualizer room={room} 
-                                    onRowClick={handleSelectedClick}
-              selectedBedId={selectedBedId}/>
+                    <TableVisualizer
+                      room={room}
+                      onRowClick={handleSelectedClick}
+                      selectedBedId={selectedBedId}
+                    />
                   ) : (
-                      <CardVisualizer room={room} 
-                                    onCardClick={handleSelectedClick}
-              selectedBedId={selectedBedId}/>
+                    <CardVisualizer
+                      room={room}
+                      onCardClick={handleSelectedClick}
+                      selectedBedId={selectedBedId}
+                    />
                   )}
                 </div>
               )}
@@ -186,10 +208,15 @@ const BedManagement = ({
           ))}
         </div>
       </div>
-      <div  className="text-right">
-                  {onSubmit&&(<button className="bg-purple-500 text-white px-4 py-2 rounded mr-4" onClick={handleSubmit }>
-        Submit
-      </button>)}
+      <div className="text-right">
+        {onSubmit && selectedBedId>=0 && (
+          <button
+            className="bg-purple-500 text-white px-4 py-2 rounded mr-4"
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        )}
       </div>
     </div>
   );

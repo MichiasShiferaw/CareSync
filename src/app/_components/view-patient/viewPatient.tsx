@@ -1,27 +1,31 @@
 "use client"
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React,{ useState, useEffect,FC } from 'react';
 import Prescribe from '../prescribe/prescribe';
 import PrescribeForm from '../prescribe/prescribeForm';
 import Image from 'next/image';
 import { AvatarIcon, FemaleAvatar, PatientIcon, RegisterPatient } from '../icons/icons';
 
-const ViewPatients = (doctorId) => {
-  const [patientInfo, setPatientInfo] = useState<string | null>(null);
+
+interface ViewProps {
+  doctorId: string;
+}
+
+const ViewPatients: FC<ViewProps> =(doctorId) => {
+  const [patientInfo, setPatientInfo] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [selectedPatientId, setSelectedPatientId] = useState<string | null>(null);
+  const [selectedPatientId, setSelectedPatientId] = useState<number | null>(null);
 //   const [showPrescription, setShowButton] = useState(userRole === 'doctor');
   const [showPrescription, setShowButton] = useState(false);
 
   const handleClose = () => setShowModal(false);
 
-  const handleShow = (patientId: string) => {
+  const handleShow = (patientId: number) => {
     setSelectedPatientId(patientId);
     setShowButton(true)
     setShowModal(true);
   }
 
-  const handlePatientDetailClick = (patientId: string) => {
+  const handlePatientDetailClick = (patientId: number) => {
     setPatientInfo((prevPatientInfo) =>
       prevPatientInfo === patientId ? null : patientId
     );
@@ -139,7 +143,7 @@ const ViewPatients = (doctorId) => {
           Close
         </button>
         {/* {/* {showPrescription && ( */}
-                  <button className='bg-purple-300 text-white py-1 px-2 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue' onClick={() => handleShow("name")}> Prescribe Medication </button>
+                  <button className='bg-purple-300 text-white py-1 px-2 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue' onClick={() => handleShow(123)}> Prescribe Medication </button>
 
                   {/* )} */}
       </div>

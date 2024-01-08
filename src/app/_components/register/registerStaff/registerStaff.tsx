@@ -28,44 +28,43 @@ const RegisterEmployeeForm = () => {
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
+  // const validateForm = () => {
+  //   const newErrors: Record<string, string> = {};
 
-    // Add validation checker here @VictorF
-    const requiredFields = [
-      "firstName",
-      "lastName",
-      "email",
-      "password",
-      "streetAddress",
-      "city",
-      "division",
-      "role",
-      "empFirstName",
-      "empLastName",
-      "registrationDate",
-    ];
-    requiredFields.forEach((field) => {
-      if (!formData[field]) {
-        newErrors[field] = "This field is required";
-      }
-    });
+  //   const requiredFields = [
+  //     "firstName",
+  //     "lastName",
+  //     "email",
+  //     "password",
+  //     "streetAddress",
+  //     "city",
+  //     "division",
+  //     "role",
+  //     "empFirstName",
+  //     "empLastName",
+  //     "registrationDate",
+  //   ];
+  //   requiredFields.forEach((field) => {
+  //     if (!formData[field]) {
+  //       newErrors[field] = "This field is required";
+  //     }
+  //   });
 
-    setErrors(newErrors);
+  //   setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0;
-  };
+  //   return Object.keys(newErrors).length === 0;
+  // };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate the form
-    if (validateForm()) {
+    // if (validateForm()) {
       // Submit the form data or perform other actions
       console.log("Form submitted:", formData);
-    } else {
-      console.log("Form validation failed.");
-      console.log(formData)
-    }
+    // } else {
+    //   console.log("Form validation failed.");
+    //   console.log(formData)
+    // }
   };
   return (
     <div className="container mx-auto mt-4 border-4 border-primary shadow-2xl rounded-xl pt-4 pb-2">
@@ -89,13 +88,9 @@ const RegisterEmployeeForm = () => {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.firstName ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.firstName && (
-              <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
-            )}
+            
           </div>
           <div className="w-1/2 ml-2">
             <label
@@ -110,13 +105,9 @@ const RegisterEmployeeForm = () => {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.lastName ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3`}
             />
-            {errors.lastName && (
-              <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
-            )}
+
           </div>
         </div>
         <div className="mb-4">
@@ -129,13 +120,9 @@ const RegisterEmployeeForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full border rounded-md py-2 px-3 ${
-              errors.email ? "border-red-500" : ""
-            }`}
+            className={`w-full border rounded-md py-2 px-3 $`}
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-          )}
+          
         </div>
 
         <div className="flex mb-4">
@@ -152,13 +139,9 @@ const RegisterEmployeeForm = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.password ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-            )}
+            
           </div>
           <div className="w-1/2 ml-2">
             <label
@@ -173,15 +156,9 @@ const RegisterEmployeeForm = () => {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.confirmPassword ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.confirmPassword && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.confirmPassword}
-              </p>
-            )}
+           
           </div>
         </div>
 
@@ -203,15 +180,9 @@ const RegisterEmployeeForm = () => {
               name="streetAddress"
               value={formData.streetAddress}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.streetAddress ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.streetAddress && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.streetAddress}
-              </p>
-            )}
+            
           </div>
 
           <div className="w-1/6 ml-2">
@@ -227,13 +198,9 @@ const RegisterEmployeeForm = () => {
               name="city"
               value={formData.city}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.city ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.city && (
-              <p className="text-red-500 text-sm mt-1">{errors.city}</p>
-            )}
+            
           </div>
 
           <div className="w-4/12 ml-2">
@@ -249,13 +216,9 @@ const RegisterEmployeeForm = () => {
               name="postalCode"
               value={formData.postalCode}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.postalCode ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.postalCode && (
-              <p className="text-red-500 text-sm mt-1">{errors.postalCode}</p>
-            )}
+            
           </div>
         </div>
 
@@ -325,13 +288,9 @@ const RegisterEmployeeForm = () => {
               name="empFirstName"
               value={formData.empFirstName}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.empFirstName ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.empFirstName && (
-              <p className="text-red-500 text-sm mt-1">{errors.empFirstName}</p>
-            )}
+            
           </div>
           <div className="w-1/3 mx-2">
             <label
@@ -346,13 +305,9 @@ const RegisterEmployeeForm = () => {
               name="empLastName"
               value={formData.empLastName}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.empLastName ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.empLastName && (
-              <p className="text-red-500 text-sm mt-1">{errors.empLastName}</p>
-            )}
+            
           </div>
           <div className="w-1/4 ml-2">
             <label
@@ -367,15 +322,9 @@ const RegisterEmployeeForm = () => {
               name="registrationDate"
               value={formData.registrationDate}
               onChange={handleChange}
-              className={`w-full border rounded-md py-2 px-3 ${
-                errors.registrationDate ? "border-red-500" : ""
-              }`}
+              className={`w-full border rounded-md py-2 px-3 `}
             />
-            {errors.registrationDate && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.registrationDate}
-              </p>
-            )}
+            
           </div>
         </div>
 

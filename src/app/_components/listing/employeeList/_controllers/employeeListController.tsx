@@ -12,7 +12,8 @@ const employeeListController = ({department="Cardiology"}) => {
 
 
   return (
-    <EmployeeList department={department} onView={handleView}/>
+    // <EmployeeList department={department} onView={handleView}/>
+    <EmployeeList/>
   )
 }
 

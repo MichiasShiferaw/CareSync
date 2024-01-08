@@ -1,33 +1,55 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 
-const Prescribe = ({ visible, onClose, patientId, onSubmit }) => {
-  const [drugName, setDrugName] = useState("");
-  const [dosage, setDosage] = useState("");
-  const [frequency, setFrequency] = useState("");
-  const [route, setRoute] = useState("");
-  const [timeOfDay, setTimeOfDay] = useState("");
-  const [startDateType, setStartDateType] = useState("today");
-  const [startDate, setStartDate] = useState(new Date());
-  const [finishDate, setFinishDate] = useState(
+interface PrescribeProps {
+  visible: boolean;
+  onClose: () => void;
+  patientId: number|null;
+  onSubmit: (data: PrescriptionData) => void;
+}
+
+interface PrescriptionData {
+  drugName: string;
+  dosage: string;
+  frequency: string;
+  route: string;
+  timeOfDay: string;
+  startDate: Date;
+  finishDate: Date;
+}
+
+const Prescribe: FC<PrescribeProps> = ({
+  visible,
+  onClose,
+  patientId,
+  onSubmit,
+}) => {
+  const [drugName, setDrugName] = useState<string>("");
+  const [dosage, setDosage] = useState<string>("");
+  const [frequency, setFrequency] = useState<string>("");
+  const [route, setRoute] = useState<string>("");
+  const [timeOfDay, setTimeOfDay] = useState<string>("");
+  const [startDateType, setStartDateType] = useState<string>("today");
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [finishDate, setFinishDate] = useState<Date>(
     new Date(Date.now() + 10 * 24 * 3600 * 1000)
   );
 
-  const [validated, setValidated] = useState(false);
+  const [validated, setValidated] = useState<boolean>(false);
 
   if (!visible) return null;
 
-  const handleStartDateTypeChange = (type) => {
+  const handleStartDateTypeChange = (type: string) => {
     setStartDateType(type);
-    console.log(type)
+    console.log(type);
     if (type === "today") {
-      setStartDateType(new Date(Date.now() - 192 * 3600 * 1000));
+      setStartDate(new Date(Date.now() - 192 * 3600 * 1000));
     } else {
       setStartDate(new Date(Date.now() - 96 * 3600 * 1000));
     }
   };
 
-  const handlePrescriptionSubmit = (e) => {
+  const handlePrescriptionSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     onSubmit({
@@ -44,7 +66,9 @@ const Prescribe = ({ visible, onClose, patientId, onSubmit }) => {
     onClose();
   };
 
-  const handlePrescribe = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handlePrescribe = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
     const form = event.currentTarget;
     setValidated(true);

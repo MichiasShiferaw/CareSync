@@ -13,8 +13,9 @@ const profile = () => {
             <div className="bg-white p-3">
               <div className="image overflow-hidden">
                 <Image
+                  width={250} height={250}
                   className="h-1/4 w-1/4 mx-auto"
-                  src="https://www.pngall.com/wp-content/uploads/5/Profile.png"
+                  src="/assets/Profile.png"
                   alt=""
                 />
               </div>

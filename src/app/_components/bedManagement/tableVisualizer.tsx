@@ -1,7 +1,23 @@
-import React from "react";
+import React, { FC } from "react";
 import { IdeaIcon } from "@/app/_components/icons/icons";
 
-const getBackgroundColor = ({ bed, selectedBedId }) => {
+interface Bed {
+  id: number;
+  name: string;
+  isUsed: boolean;
+}
+
+interface Room {
+  beds: Bed[];
+}
+
+interface TableVisualizerProps {
+  room: Room;
+  onRowClick: (id: number) => void;
+  selectedBedId: number;
+}
+
+const getBackgroundColor = ({ bed, selectedBedId }: { bed: Bed; selectedBedId: number }): string => {
   if (bed.isUsed) {
     return "border-gray-200 border-1 bg-white hover:bg-gray-400 text-red-700";
   } else if (!bed.isUsed && selectedBedId === bed.id) {
@@ -11,7 +27,7 @@ const getBackgroundColor = ({ bed, selectedBedId }) => {
   }
 };
 
-const tableVisualizer = ({ room, onRowClick, selectedBedId }) => {
+const TableVisualizer: FC<TableVisualizerProps> = ({ room, onRowClick, selectedBedId }) => {
   return (
     <table className="table-auto w-full border-collapse border border-gray-800 mt-2">
       <thead>
@@ -23,7 +39,7 @@ const tableVisualizer = ({ room, onRowClick, selectedBedId }) => {
         </tr>
       </thead>
       <tbody>
-        {room.beds.map((bed) => (
+        {room &&room.beds.map((bed) => (
           <tr
             key={bed.id}
             onClick={() => onRowClick(bed.id)}
@@ -37,7 +53,7 @@ const tableVisualizer = ({ room, onRowClick, selectedBedId }) => {
               className={` border-gray-800 p-2 flex items-center justify-center`}
             >
               {" "}
-              {bed.isUsed && <IdeaIcon />}
+              {bed.isUsed && <IdeaIcon className={undefined} />}
             </td>
             <td className={`border border-gray-800 p-2`}>
               {!bed.isUsed && selectedBedId === bed.id && (
@@ -54,4 +70,4 @@ const tableVisualizer = ({ room, onRowClick, selectedBedId }) => {
   );
 };
 
-export default tableVisualizer;
+export default TableVisualizer;

@@ -1,7 +1,21 @@
+import React, { FC } from "react";
 import Link from "next/link";
-import React from "react";
 
-const buttonHeader = ({ title, buttonName, href, desc = "",className="" }) => {
+interface ButtonHeaderProps {
+  title: string;
+  buttonName: string;
+  href: string;
+  desc?: string;
+  className?: string;
+}
+
+const ButtonHeader: FC<ButtonHeaderProps> = ({
+  title,
+  buttonName,
+  href,
+  desc = "",
+  className = "",
+}) => {
   return (
     <div className={`${className} lg:flex lg:items-center lg:justify-between py-4`}>
       <div className="min-w-0 flex-1 border-b">
@@ -32,4 +46,4 @@ const buttonHeader = ({ title, buttonName, href, desc = "",className="" }) => {
   );
 };
 
-export default buttonHeader;
+export default ButtonHeader;

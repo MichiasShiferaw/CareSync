@@ -1,11 +1,30 @@
 "use client";
+import React, { FC, useState, ChangeEvent } from "react";
 import Image from "next/image";
-import React from "react";
-import { useState } from "react";
 
-const PatientProfile = ({patientId, onSubmit=null}) => {
+interface PatientProfileProps {
+  patientId: string;
+  onSubmit?: (values: EditedValues) => void;
+}
+
+interface EditedValues {
+  firstName: string;
+  lastName: string;
+  gender: string;
+  dOB: string;
+  martialStatus: string;
+  phoneNumber: string;
+  addressStreetName: string;
+  addressCity: string;
+  addressPostCode: string;
+}
+
+const PatientProfile: FC<PatientProfileProps> = ({
+  patientId,
+  onSubmit = null,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedValues, setEditedValues] = useState({
+  const [editedValues, setEditedValues] = useState<EditedValues>({
     // Initialize with default values from backend
     firstName: "Jane",
     lastName: "Doe",
@@ -44,7 +63,7 @@ const PatientProfile = ({patientId, onSubmit=null}) => {
     setIsEditing(false);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setEditedValues({
       ...editedValues,
       [e.target.name]: e.target.value,
@@ -52,7 +71,9 @@ const PatientProfile = ({patientId, onSubmit=null}) => {
   };
 
   const handleSubmit = () => {
-    onSubmit(editedValues);
+    if (onSubmit) {
+      onSubmit(editedValues);
+    }
   };
 
   return (
@@ -62,8 +83,10 @@ const PatientProfile = ({patientId, onSubmit=null}) => {
           <div className="bg-white p-3 border-t-4 border-blue-400">
             <div className="image overflow-hidden">
               <Image
+                width={250}
+                height={250}
                 className="h-1/2 w-1/2 mx-auto"
-                src="https://www.pngall.com/wp-content/uploads/5/Profile.png"
+                src="/assets/Profile.png"
                 alt=""
               />
             </div>
@@ -379,9 +402,11 @@ const PatientProfile = ({patientId, onSubmit=null}) => {
           </div>
         </div>
       </div>
-            {onSubmit&&(<button className="bg-purple-500 text-white px-4 py-2 rounded" onClick={handleSubmit}>
-        Submit
-      </button>)}
+      {onSubmit && (
+        <button className="bg-purple-500 text-white px-4 py-2 rounded" onClick={handleSubmit}>
+          Submit
+        </button>
+      )}
     </div>
   );
 };

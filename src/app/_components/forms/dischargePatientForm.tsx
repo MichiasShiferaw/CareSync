@@ -1,8 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { FC } from "react";
 import Alert from "../alerts/basicAlert";
 
-const DischargePatientForm = ({ visible, onClose, patient, onSubmit }) => {
+interface DischargePatientFormProps {
+  visible: boolean;
+  onClose: () => void;
+  patient: any;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}
+
+const DischargePatientForm: FC<DischargePatientFormProps> = ({
+  visible,
+  onClose,
+  patient,
+  onSubmit,
+}) => {
   if (!visible) return null;
   return (
     <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">

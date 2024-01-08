@@ -1,4 +1,4 @@
-import AdmittedList from '@/app/_components/listing/patient/admittedList/admittedList'
+
 import React from 'react';
 import ViewPatients from '@/app/_components/view-patient/viewPatient';
 

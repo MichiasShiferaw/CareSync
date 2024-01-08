@@ -1,17 +1,18 @@
 "use client";
-import { Outlet } from "react-router-dom";
-import React, { useState } from "react";
+import React, { FC, ReactNode, useEffect, useState } from "react";
 import Sidebar from "../_components/dashboard/navigation/sidebar";
 import MobileNav from "../_components/dashboard/navigation/mobileNav";
 import Header from "../_components/dashboard/header";
-import Link from "next/link";
-import { ChevronDown } from "../_components/icons/icons";
-import Breadcrumb from "../_components/breadcrumb/breadcrumb";
 
-const Layout = ({ children, className = "" }) => {
-  const [isMobile, setIsMobile] = React.useState(false);
+interface LayoutProps {
+  children: ReactNode;
+  className?: string;
+}
 
-  React.useEffect(() => {
+const Layout: FC<LayoutProps> = ({ children, className = "" }) => {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768); // Adjust the breakpoint as needed
     };

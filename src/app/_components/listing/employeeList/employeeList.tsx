@@ -1,12 +1,13 @@
-import React from 'react';
+import React,{FC} from 'react';
 import CardGroup from '../../card/cardGroup';
 import BasicCard from '../../card/basicCard';
 
-const employeeList  = ({department, onView}) => {
+// const employeeList= ({department, onView}) => {
+  const employeeList = ()=>{
 
   // A function to pick a random .svg based on gender
 
-department= [
+const department= [
     {
     firstName: 'John',
     lastName: 'Doe',
@@ -120,7 +121,7 @@ department= [
   const cards = department.map((employee, index) => ({
     imageUrl: employee.icon,
     title: `${employee.firstName} ${employee.lastName}`,
-    subsection: employee.id,
+    subsection: "#"+employee.id,
     bodyPart1: employee.gender,
     bodyPart2: employee.role,
   }));

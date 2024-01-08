@@ -1,7 +1,11 @@
-import React from "react";
-import Card from "./basicCard";
+import React, { FC } from "react";
+import Card, { BasicCardProps } from "./basicCard";
 
-const cardGroup = ({ cards }) => {
+interface CardGroupProps {
+  cards: BasicCardProps[];
+}
+
+const CardGroup: FC<CardGroupProps> = ({ cards }) => {
   return (
     <div className="flex flex-wrap -mx-4">
       {cards.map((card, index) => (
@@ -16,4 +20,4 @@ const cardGroup = ({ cards }) => {
   );
 };
 
-export default cardGroup;
+export default CardGroup;
